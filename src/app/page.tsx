@@ -1,65 +1,151 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+import React from "react";
+import ToothScene from "@/components/canvas/ToothScene";
+import SmoothScroll from "@/components/core/SmoothScroll";
+import { motion } from "framer-motion";
+
+const Section = ({ children, className = "" }: { children: React.ReactNode; className?: string }) => (
+  <section className={`relative min-h-screen w-full flex items-center justify-center px-6 md:px-24 ${className}`}>
+    {children}
+  </section>
+);
+
+export default function Page() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <SmoothScroll>
+      <ToothScene />
+
+      <main className="relative z-10">
+        {/* Hero Section */}
+        <Section className="justify-center text-center">
+          <div className="max-w-4xl">
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-7xl md:text-9xl font-nuckle font-normal text-text"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              DENTIQ
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xl md:text-2xl text-text-secondary mt-4"
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+              We All Shine.
+            </motion.p>
+          </div>
+        </Section>
+
+        {/* Services Section */}
+        <Section className="justify-start">
+          <div className="max-w-xl">
+            <motion.h2
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-7xl font-nuckle text-text mb-8"
+            >
+              Modern <br /> Excellence
+            </motion.h2>
+            <div className="space-y-6">
+              {[
+                { title: "Digital Implantology", desc: "Precision-guided placements for lasting results." },
+                { title: "Smile Aesthetics", desc: "Crafting a natural, radiant smile tailored to you." },
+                { title: "Periodontal Care", desc: "Advanced gum health for a stronger foundation." }
+              ].map((service, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.2 }}
+                  className="p-6 rounded-card bg-bg-secondary border border-border hover:border-primary transition-colors cursor-pointer group"
+                >
+                  <h3 className="text-2xl font-nuckle text-text group-hover:text-primary transition-colors">{service.title}</h3>
+                  <p className="text-text-secondary mt-2">{service.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* Detail Section */}
+        <Section className="justify-center text-center">
+          <div className="max-w-3xl">
+            <motion.h2
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+              className="text-6xl md:text-8xl font-nuckle text-text"
+            >
+              The Art of <span className="text-primary">Precision</span>
+            </motion.h2>
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="text-lg text-text-secondary mt-6 max-w-lg mx-auto"
+            >
+              Combining cutting-edge technology with a human touch. Every detail is meticulously crafted to ensure your comfort and a perfect result.
+            </motion.p>
+          </div>
+        </Section>
+
+        {/* About/Team Section */}
+        <Section className="justify-end text-right">
+          <div className="max-w-xl">
+            <motion.h2
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-7xl font-nuckle text-text mb-8"
+            >
+              Expert Hands, <br /> Caring Hearts
+            </motion.h2>
+            <div className="grid grid-cols-2 gap-4">
+              {[1, 2, 3, 4].map((item) => (
+                <motion.div
+                  key={item}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: item * 0.1 }}
+                  className="aspect-square bg-border rounded-button overflow-hidden group relative"
+                >
+                  <div className="absolute inset-0 bg-primary opacity-0 group-hover:opacity-20 transition-opacity" />
+                  <div className="w-full h-full bg-grey-200" />
+                  {/* Images would go here */}
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </Section>
+
+        {/* Footer Section */}
+        <Section className="justify-center text-center bg-text text-bg">
+          <div className="max-w-4xl">
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-5xl md:text-7xl font-nuckle mb-12"
+            >
+              Ready to Shine?
+            </motion.h2>
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-12 py-4 bg-primary text-text font-nuckle text-xl rounded-button hover:bg-white transition-colors"
+            >
+              Book Your Consultation
+            </motion.button>
+            <div className="mt-24 text-text-secondary text-sm">
+              © 2026 DENTIQ. All rights reserved.
+            </div>
+          </div>
+        </Section>
       </main>
-    </div>
+    </SmoothScroll>
   );
 }

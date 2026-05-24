@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: 'Nuckle';
+  src: url('https://halodental.com/_nuxt/Nuckle-Thin.Cx63tr_I.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Nuckle';
+  src: url('https://halodental.com/_nuxt/Nuckle-Medium.DdSIyu87.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Nuckle';
+  src: url('https://halodental.com/_nuxt/Nuckle-Bold.BPJx8F65.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #ff5e2b;
+  --color-secondary: #db2020;
+  --color-bg: #f5f1ee;
+  --color-bg-secondary: #ffffff;
+  --color-text: #000000;
+  --color-text-secondary: #84809b;
+  --color-border: #e8e4e1;
+  --radius-subtle: 4px;
+  --radius-button: 8px;
+  --radius-card: 50px;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-bg: var(--color-bg);
+  --color-bg-secondary: var(--color-bg-secondary);
+  --color-text: var(--color-text);
+  --color-text-secondary: var(--color-text-secondary);
+  --color-border: var(--color-border);
+  --radius-subtle: var(--radius-subtle);
+  --radius-button: var(--radius-button);
+  --radius-card: var(--radius-card);
+  --font-nuckle: 'Nuckle', Arial, Helvetica, sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-nuckle);
 }
