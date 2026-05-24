@@ -156,7 +156,7 @@ export default function Page() {
               <div className="text-left">
                 <h3 className="text-6xl font-nuckle">DENTIQ</h3>
                 <p className="text-silver-grey mt-4 text-xl font-light">Redefining the smile experience.</p>
-              </div}
+              </div>
               <motion.button
                 whileHover={{ scale: 1.05, boxShadow: "0 0 30px rgba(255,94,43,0.4)" }}
                 whileTap={{ scale: 0.95 }}
@@ -165,7 +165,7 @@ export default function Page() {
                 Book Your Consultation
               </motion.button>
             </div>
-            <div className la="mt-32 pt-12 border-t border-white/10 text-silver-grey text-sm flex justify-between items-center font-light uppercase tracking-widest">
+            <div className="mt-32 pt-12 border-t border-white/10 text-silver-grey text-sm flex justify-between items-center font-light uppercase tracking-widest">
               <p>© 2026 DENTIQ. Digital Artistry.</p>
               <div className="flex gap-12">
                 <a href="#" className="hover:text-white transition-colors">Privacy</a>
