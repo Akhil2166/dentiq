@@ -18,7 +18,7 @@ export default function SpecialitiesGrid() {
   const items = [
     { title: "Digital Implantology", desc: "Precision-guided placements for a lifetime of stability and confidence.", icon: "🦷" },
     { title: "Smile Design", desc: "Custom aesthetic contours that harmonize with your unique facial features.", icon: "✨" },
-    { title: la: "Advanced Periodontics", desc: "Holistic gum care focused on preserving the foundation of your smile.", icon: "🛡️" },
+    { title: "Advanced Periodontics", desc: "Holistic gum care focused on preserving the foundation of your smile.", icon: "🛡️" },
     { title: "Preventative Care", desc: "Proactive health strategies to ensure long-term oral wellness.", icon: "🩺" },
   ];
 
