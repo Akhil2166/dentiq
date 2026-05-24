@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FaCommentDots, FaClose } from "react-icons/fa";
+import { FaCommentDots, FaTimes } from "react-icons/fa";
 
 type Message = { role: "ai" | "user"; text: string };
 
@@ -46,7 +46,7 @@ export default function AIChatbot() {
                 <span className="text-sm font-nuckle font-medium uppercase tracking-widest">DENTIQ AI Concierge</span>
               </div>
               <button onClick={() => setIsOpen(false)} className="text-charcoal hover:rotate-90 transition-transform">
-                <FaClose size={14} />
+                <FaTimes size={14} />
               </button>
             </div>
 

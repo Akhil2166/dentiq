@@ -14,7 +14,7 @@ const Review = ({ name, text, rating }: { name: string; text: string; rating: nu
         <span key={i}>★</span>
       ))}
     </div>
-    <p className="text-text text-lg italic mb-6">"{text}"</p>
+    <p className="text-text text-lg italic mb-6">&quot; {text} &quot;</p>
     <p className="text-text-secondary font-medium">— {name}</p>
   </motion.div>
 );

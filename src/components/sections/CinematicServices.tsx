@@ -37,7 +37,7 @@ export default function CinematicServices() {
     },
     {
       title: "Invisible Precision Aligners",
-      category que: "Correction",
+      category: "Correction",
       description: "The invisibility of technology meeting the perfection of biology. Aligned for luxury, designed for comfort.",
     },
     {
