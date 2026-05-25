@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { FaWhatsapp, FaEnvelope, FaCommentDots } from "react-icons/fa";
+import { FaWhatsapp, FaEnvelope } from "react-icons/fa";
 
 export default function FloatingActionBar() {
   return (
@@ -15,24 +15,18 @@ export default function FloatingActionBar() {
         <a
           href="https://wa.me/yournumber"
           target="_blank"
-          className="w-14 h-14 bg-green-500 text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+          className="w-12 h-12 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
           aria-label="WhatsApp"
         >
-          <FaWhatsapp size={28} />
+          <FaWhatsapp size={22} />
         </a>
         <a
-          href="mailto:contact@dentiq.com"
-          className="w-14 h-14 bg-primary text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
+          href="mailto:hello@dentiq.com"
+          className="w-12 h-12 bg-champagne text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
           aria-label="Email"
         >
-          <FaEnvelope size={24} />
+          <FaEnvelope size={18} />
         </a>
-        <button
-          className="w-14 h-14 bg-text text-white rounded-full flex items-center justify-center shadow-lg hover:scale-110 transition-transform"
-          aria-label="Chatbot"
-        >
-          <FaCommentDots size={24} />
-        </button>
       </motion.div>
     </div>
   );

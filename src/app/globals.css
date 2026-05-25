@@ -1,65 +1,37 @@
 @import "tailwindcss";
 
-@font-face {
-  font-family: 'Nuckle';
-  src: url('https://halodental.com/_nuxt/Nuckle-Thin.Cx63tr_I.woff2') format('woff2');
-  font-weight: 100;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Nuckle';
-  src: url('https://halodental.com/_nuxt/Nuckle-Medium.DdSIyu87.woff2') format('woff2');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Nuckle';
-  src: url('https://halodental.com/_nuxt/Nuckle-Bold.BPJx8F65.woff2') format('woff2');
-  font-weight: 700;
-  font-style: normal;
-}
-
-:root {
-  --color-pure-white: #ffffff;
-  --color-soft-white: #f7f7f7;
-  --color-silver-grey: #d9dde2;
-  --color-light-grey: #ececec;
-  --color-charcoal: #111111;
-  --color-icy-blue: #e0f2fe;
-  --color-glow: rgba(186, 230, 253, 0.3);
-  --radius-luxury: 2px;
-  --radius-card: 32px;
-}
-
 @theme inline {
-  --color-pure-white: var(--color-pure-white);
-  --color-soft-white: var(--color-soft-white);
-  --color-silver-grey: var(--color-silver-grey);
-  --color-light-grey: var(--color-light-grey);
-  --color-charcoal: var(--color-charcoal);
-  --color-icy-blue: var(--color-icy-blue);
-  --color-glow: var(--color-glow);
-  --radius-luxury: var(--radius-luxury);
-  --radius-card: var(--radius-card);
-  --font-nuckle: 'Nuckle', Arial, Helvetica, sans-serif;
+  --color-cream: #fefcf9;
+  --color-warm-white: #faf7f2;
+  --color-pure-white: #ffffff;
+  --color-champagne: #c9a96e;
+  --color-champagne-light: #e8d5b7;
+  --color-champagne-dim: #f5edd6;
+  --color-charcoal: #1a1a1a;
+  --color-soft-charcoal: #2d2d2d;
+  --color-stone: #8a8a8a;
+  --color-muted: #b0b0b0;
+  --color-border: #e8e4df;
+  --color-border-light: #f0ece7;
+  --color-sage: #d4d9ce;
+  --color-blush: #f5e6e0;
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans: 'Inter', system-ui, sans-serif;
 }
 
 body {
-  background: var(--color-soft-white);
-  color: var(--color-charcoal);
-  font-family: var(--font-nuckle);
+  background: var(--color-cream);
+  color: var(--color-soft-charcoal);
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
-}
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-warm-white); }
+::-webkit-scrollbar-thumb { background: var(--color-champagne-light); border-radius: 3px; }
 
-.cinematic-glow {
-  text-shadow: 0 0 20px var(--color-glow);
+::selection {
+  background: var(--color-champagne);
+  color: white;
 }
-
