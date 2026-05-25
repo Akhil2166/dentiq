@@ -1,76 +1,98 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FaChevronLeft, FaChevronRight, FaStar } from "react-icons/fa";
 
 const reviews = [
   {
-    name: "Julianne M.",
-    text: "I was nervous about my smile makeover, but the team at DENTIQ made every moment comfortable. The result? I smile more in a day than I used to in a year.",
+    name: "Sophie Laurent",
+    text: "I used to dread the dentist. DENTIQ completely changed that. The warm atmosphere, the gentle care — I actually look forward to my visits now. My smile has never looked better.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80",
   },
   {
-    name: "Marcus T.",
-    text: "The attention to detail is unmatched. My veneers look so natural that even my close friends can't tell — they just say I look 'different, in a great way.'",
+    name: "Marcus Thorne",
+    text: "The attention to detail is remarkable. My veneers look so natural that people just say I look 'refreshed' — exactly what I wanted. Worth every penny.",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80",
   },
   {
-    name: "Sophie L.",
-    text: "From the warm studio atmosphere to the gentle care during my implant procedure — DENTIQ has completely changed how I feel about dentistry.",
+    name: "Julianne Moore",
+    text: "From the moment I walked in, I felt like family. The team listened to exactly what I wanted and delivered beyond my expectations. I can't stop smiling!",
     rating: 5,
-    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80",
+  },
+  {
+    name: "David Kim",
+    text: "Invisalign through DENTIQ was a breeze. The digital scanning was so much better than those messy impressions. Results in half the time I expected.",
+    rating: 5,
   },
 ];
 
 export default function TestimonialsSection() {
+  const [current, setCurrent] = useState(0);
+
+  const next = () => setCurrent((c) => (c + 1) % reviews.length);
+  const prev = () => setCurrent((c) => (c - 1 + reviews.length) % reviews.length);
+
   return (
-    <section id="testimonials" className="relative w-full px-6 py-32 md:py-48">
+    <section id="reviews" className="relative w-full px-6 py-24 md:py-36 bg-warm overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center max-w-2xl mx-auto mb-20"
+          className="text-center max-w-2xl mx-auto mb-16"
         >
-          <span className="text-xs uppercase tracking-[0.3em] text-champagne font-medium">
-            Testimonials
-          </span>
-          <h2 className="text-4xl md:text-6xl font-serif text-charcoal mt-4">
-            Patient Stories
+          <span className="text-xs uppercase tracking-[0.3em] text-gold font-medium">Testimonials</span>
+          <h2 className="text-4xl md:text-5xl font-serif text-charcoal mt-3">
+            What our <span className="italic">patients</span> say
           </h2>
-          <p className="text-stone text-lg mt-4 font-light">
-            Real smiles. Real results. Hear from those who have trusted us with their transformation.
-          </p>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {reviews.map((review, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              viewport={{ once: true }}
-              className="bg-pure-white rounded-2xl p-8 border border-border-light"
-            >
-              <div className="flex gap-1 mb-5">
-                {[...Array(review.rating)].map((_, j) => (
-                  <span key={j} className="text-champagne text-lg">★</span>
-                ))}
-              </div>
-              <p className="text-soft-charcoal leading-relaxed text-sm font-light italic mb-6">
-                &ldquo;{review.text}&rdquo;
-              </p>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full overflow-hidden bg-champagne-dim">
-                  <img src={review.image} alt={review.name} className="w-full h-full object-cover" />
+
+        <div className="max-w-3xl mx-auto relative">
+          <div className="overflow-hidden">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.4 }}
+                className="bg-white rounded-2xl p-8 md:p-12 border border-border-light text-center"
+              >
+                <div className="flex justify-center gap-1 mb-6">
+                  {[...Array(reviews[current].rating)].map((_, i) => (
+                    <FaStar key={i} className="text-gold" size={18} />
+                  ))}
                 </div>
-                <span className="text-sm font-medium text-charcoal">{review.name}</span>
-              </div>
-            </motion.div>
-          ))}
+                <p className="text-lg md:text-xl text-text leading-relaxed font-light italic">
+                  &ldquo;{reviews[current].text}&rdquo;
+                </p>
+                <p className="text-sm font-medium text-charcoal mt-6">— {reviews[current].name}</p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="flex justify-center gap-4 mt-8">
+            <button onClick={prev}
+              className="w-12 h-12 rounded-full border border-border bg-white flex items-center justify-center text-muted hover:text-charcoal hover:border-charcoal transition-all">
+              <FaChevronLeft size={16} />
+            </button>
+            <button onClick={next}
+              className="w-12 h-12 rounded-full border border-border bg-white flex items-center justify-center text-muted hover:text-charcoal hover:border-charcoal transition-all">
+              <FaChevronRight size={16} />
+            </button>
+          </div>
+
+          <div className="flex justify-center gap-2 mt-6">
+            {reviews.map((_, i) => (
+              <button key={i} onClick={() => setCurrent(i)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  i === current ? "bg-gold w-6" : "bg-border"
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
