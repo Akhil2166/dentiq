@@ -14,59 +14,59 @@ const links = [
 ];
 
 export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 60);
+    const onScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-      scrolled ? "bg-cream/95 backdrop-blur-md shadow-sm" : "bg-transparent"
+      scrolled ? "bg-white/90 backdrop-blur-md shadow-sm" : "bg-transparent"
     }`}>
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="text-2xl font-serif text-charcoal tracking-tight hover:text-gold transition-colors">
+      <div className="max-w-7xl mx-auto px-5 md:px-8 py-4 flex items-center justify-between">
+        <a href="#" className="text-xl md:text-2xl font-heading font-bold text-grey-900 tracking-tight">
           DENTIQ
         </a>
 
-        <nav className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <a key={link.href} href={link.href}
-              className="text-sm text-muted hover:text-charcoal transition-colors uppercase tracking-wider font-medium">
-              {link.label}
+        <nav className="hidden md:flex items-center gap-6 lg:gap-8">
+          {links.map((l) => (
+            <a key={l.href} href={l.href}
+              className="text-sm text-grey-500 hover:text-grey-900 transition-colors font-medium">
+              {l.label}
             </a>
           ))}
           <a href="#contact"
-            className="px-6 py-2.5 rounded-full bg-charcoal text-white text-xs uppercase tracking-[0.15em] font-medium hover:bg-gold transition-all duration-500">
+            className="px-6 py-2.5 rounded-full bg-grey-900 text-white text-xs font-semibold uppercase tracking-wider hover:bg-grey-700 transition-all">
             Book Now
           </a>
         </nav>
 
-        <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-charcoal" aria-label="Menu">
-          {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+        <button onClick={() => setOpen(!open)} className="md:hidden text-grey-900 p-2" aria-label="Menu">
+          {open ? <FaTimes size={20} /> : <FaBars size={20} />}
         </button>
       </div>
 
       <AnimatePresence>
-        {isOpen && (
+        {open && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-cream/95 backdrop-blur-md overflow-hidden border-t border-border-light"
+            className="md:hidden bg-white border-t border-grey-100 overflow-hidden"
           >
-            <div className="px-6 py-6 flex flex-col gap-4">
-              {links.map((link) => (
-                <a key={link.href} href={link.href} onClick={() => setIsOpen(false)}
-                  className="text-muted hover:text-charcoal transition-colors uppercase tracking-wider text-sm">
-                  {link.label}
+            <div className="px-5 py-6 flex flex-col gap-4">
+              {links.map((l) => (
+                <a key={l.href} href={l.href} onClick={() => setOpen(false)}
+                  className="text-grey-600 hover:text-grey-900 transition-colors text-sm font-medium">
+                  {l.label}
                 </a>
               ))}
-              <a href="#contact" onClick={() => setIsOpen(false)}
-                className="mt-2 px-6 py-3 rounded-full bg-charcoal text-white text-xs uppercase tracking-[0.15em] font-medium text-center hover:bg-gold transition-all">
+              <a href="#contact" onClick={() => setOpen(false)}
+                className="mt-2 px-6 py-3 rounded-full bg-grey-900 text-white text-xs font-semibold uppercase tracking-wider text-center">
                 Book Now
               </a>
             </div>

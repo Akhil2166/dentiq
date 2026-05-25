@@ -15,34 +15,35 @@ function ToothModel() {
 
   useEffect(() => {
     if (!toothRef.current) return;
-    const tooth = toothRef.current;
-    gsap.set(tooth.position, { x: 0, y: 0, z: 0 });
-    gsap.set(tooth.rotation, { x: 0, y: 0, z: 0 });
-    gsap.set(tooth.scale, { x: 0.8, y: 0.8, z: 0.8 });
+    const t = toothRef.current;
+
+    gsap.set(t.position, { x: 0, y: 0, z: 0 });
+    gsap.set(t.rotation, { x: 0.1, y: 0, z: 0 });
+    gsap.set(t.scale, { x: 0.7, y: 0.7, z: 0.7 });
 
     const tl = gsap.timeline({
-      scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 1.5 },
+      scrollTrigger: { trigger: "body", start: "top top", end: "300%", scrub: 1.5 },
     });
 
-    tl.to(tooth.position, { x: 1.5, y: 0.3, duration: 1 }, 0)
-      .to(tooth.rotation, { y: Math.PI / 2, duration: 1 }, 0);
+    tl.to(t.position, { x: 1.2, y: 0.3, duration: 1 }, 0)
+      .to(t.rotation, { y: Math.PI / 2, duration: 1 }, 0)
+      .to(t.scale, { x: 0.5, y: 0.5, z: 0.5, duration: 1 }, 0);
 
-    tl.to(tooth.position, { x: 0, y: -0.2, z: 0.5, duration: 1 })
-      .to(tooth.rotation, { y: Math.PI, x: 0.1, duration: 1 }, "<")
-      .to(tooth.scale, { x: 1.5, y: 1.5, z: 1.5, duration: 1 }, "<");
+    tl.to(t.position, { x: 0, y: -0.3, z: 0.3, duration: 1 })
+      .to(t.rotation, { y: Math.PI, x: 0.2, duration: 1 }, "<")
+      .to(t.scale, { x: 1, y: 1, z: 1, duration: 1 }, "<");
 
-    tl.to(tooth.position, { x: -1.5, y: 0.3, duration: 1 })
-      .to(tooth.rotation, { y: -Math.PI / 2, duration: 1 }, "<");
+    tl.to(t.position, { x: -1.2, y: 0.3, duration: 1 })
+      .to(t.rotation, { y: -Math.PI / 2, duration: 1 }, "<")
+      .to(t.scale, { x: 0.5, y: 0.5, z: 0.5, duration: 1 }, "<");
 
-    tl.to(tooth.position, { x: 0, y: -5, duration: 1 })
-      .to(tooth.rotation, { y: Math.PI * 2, duration: 1 }, "<")
-      .to(tooth.scale, { x: 0.3, y: 0.3, z: 0.3, duration: 1 }, "<");
+    tl.to(t.position, { x: 0, y: -4, duration: 1 })
+      .to(t.rotation, { y: Math.PI * 2, duration: 1 }, "<")
+      .to(t.scale, { x: 0.2, y: 0.2, z: 0.2, duration: 1 }, "<");
   }, []);
 
   useFrame((_, delta) => {
-    if (toothRef.current) {
-      toothRef.current.rotation.y += delta * 0.15;
-    }
+    if (toothRef.current) toothRef.current.rotation.y += delta * 0.2;
   });
 
   return <primitive ref={toothRef} object={scene} />;
@@ -51,15 +52,12 @@ function ToothModel() {
 export default function ToothScene() {
   return (
     <div className="fixed inset-0 z-0 pointer-events-none">
-      <Canvas
-        camera={{ position: [0, 0, 5], fov: 45 }}
-        gl={{ antialias: true, alpha: true }}
-      >
-        <color attach="background" args={["#fefcf9"]} />
-        <Environment preset="sunset" />
-        <ambientLight intensity={0.6} />
+      <Canvas camera={{ position: [0, 0, 5], fov: 45 }} gl={{ antialias: true, alpha: true }}>
+        <color attach="background" args={["#ffffff"]} />
+        <Environment preset="city" />
+        <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={1.2} />
-        <pointLight position={[-3, 3, -3]} intensity={0.6} color="#c9a96e" />
+        <pointLight position={[-3, 3, -3]} intensity={0.5} />
         <ToothModel />
       </Canvas>
     </div>
