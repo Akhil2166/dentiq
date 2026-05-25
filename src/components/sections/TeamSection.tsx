@@ -12,7 +12,7 @@ const team = [
 
 export default function TeamSection() {
   return (
-    <section id="team" className="w-full px-5 md:px-8 py-20 md:py-32">
+    <section id="team" className="w-full px-5 md:px-8 lg:px-16 py-24 md:py-36 bg-white">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -21,11 +21,11 @@ export default function TeamSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-xl mx-auto mb-12 md:mb-16"
         >
-          <span className="text-xs md:text-sm text-grey-400 uppercase tracking-[0.25em] font-medium">Our Team</span>
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-grey-900 mt-2 md:mt-3">
+          <span className="text-[10px] md:text-xs text-text-muted uppercase tracking-[0.25em] font-medium">Our Team</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-text-primary mt-2 md:mt-3">
             Meet the <span className="italic font-normal">experts</span>
           </h2>
-          <p className="text-sm md:text-base text-grey-400 mt-2 md:mt-3">Skilled professionals who genuinely care about your smile.</p>
+          <p className="text-sm md:text-base text-text-secondary mt-2 md:mt-3">Skilled professionals who care about your smile.</p>
         </motion.div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
@@ -38,7 +38,7 @@ export default function TeamSection() {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="group text-center"
             >
-              <div className="relative aspect-[3/4] w-full rounded-xl overflow-hidden bg-grey-100 mb-3 md:mb-4">
+              <div className="relative aspect-[3/4] w-full rounded-lg md:rounded-xl overflow-hidden bg-cement-200 mb-3 md:mb-4 shadow-sm">
                 <img src={m.img} alt={m.name}
                   className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:opacity-0"
                   loading="lazy" />
@@ -46,8 +46,8 @@ export default function TeamSection() {
                   className="absolute inset-0 w-full h-full object-cover transition-all duration-500 opacity-0 group-hover:opacity-100 group-hover:scale-100 scale-110"
                   loading="lazy" />
               </div>
-              <h3 className="text-sm md:text-lg font-heading font-semibold text-grey-900">{m.name}</h3>
-              <p className="text-[11px] md:text-xs text-grey-400 uppercase tracking-wider mt-0.5 md:mt-1">{m.role}</p>
+              <h3 className="text-sm md:text-lg font-heading font-semibold text-text-primary">{m.name}</h3>
+              <p className="text-[11px] md:text-xs text-text-muted uppercase tracking-wider mt-0.5 md:mt-1">{m.role}</p>
             </motion.div>
           ))}
         </div>

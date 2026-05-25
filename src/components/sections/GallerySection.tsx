@@ -14,7 +14,7 @@ const images = [
 
 export default function GallerySection() {
   return (
-    <section id="gallery" className="w-full px-5 md:px-8 py-20 md:py-32">
+    <section id="gallery" className="w-full px-5 md:px-8 lg:px-16 py-24 md:py-36 bg-white">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -23,9 +23,9 @@ export default function GallerySection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-xl mx-auto mb-10 md:mb-16"
         >
-          <span className="text-xs md:text-sm text-grey-400 uppercase tracking-[0.25em] font-medium">Gallery</span>
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-grey-900 mt-2 md:mt-3">Our Studio</h2>
-          <p className="text-sm md:text-base text-grey-400 mt-2 md:mt-3">Where your smile transformation happens.</p>
+          <span className="text-[10px] md:text-xs text-text-muted uppercase tracking-[0.25em] font-medium">Gallery</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-text-primary mt-2 md:mt-3">Our Studio</h2>
+          <p className="text-sm md:text-base text-text-secondary mt-2 md:mt-3">Where your smile transformation happens.</p>
         </motion.div>
 
         <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
@@ -35,8 +35,8 @@ export default function GallerySection() {
               initial={{ opacity: 0, scale: 0.95 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: i * 0.05 }}
-              className={`overflow-hidden rounded-lg md:rounded-xl bg-grey-100 ${img.span} min-h-[120px] md:min-h-[200px]`}
+              transition={{ duration: 0.35, delay: i * 0.05 }}
+              className={`overflow-hidden rounded-lg md:rounded-xl bg-cement-200 ${img.span} min-h-[120px] md:min-h-[200px] shadow-sm`}
             >
               <img src={img.src} alt=""
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"

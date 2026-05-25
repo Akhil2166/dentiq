@@ -1,27 +1,30 @@
 @import "tailwindcss";
 
 @theme inline {
+  --color-cement-50: #f8f6f4;
+  --color-cement-100: #f0eeeb;
+  --color-cement-200: #e2dfda;
+  --color-cement-300: #d4d0c9;
+  --color-cement-400: #c4bfb8;
+  --color-cement-500: #b8b2a8;
+  --color-cement-600: #a8a29e;
+  --color-cement-700: #8a847e;
+  --color-cement-800: #6b6661;
+  --color-cement-900: #4a4643;
+  --color-surface: #faf8f5;
+  --color-text-primary: #1a1816;
+  --color-text-secondary: #8a847e;
+  --color-text-muted: #b8b2a8;
+  --color-border: #e2dfda;
+  --color-border-light: #f0eeeb;
   --color-white: #ffffff;
-  --color-bg: #f8f9fa;
-  --color-grey-50: #f1f3f5;
-  --color-grey-100: #e9ecef;
-  --color-grey-200: #dee2e6;
-  --color-grey-300: #ced4da;
-  --color-grey-400: #adb5bd;
-  --color-grey-500: #6c757d;
-  --color-grey-600: #495057;
-  --color-grey-700: #343a40;
-  --color-grey-800: #212529;
-  --color-grey-900: #111827;
-  --color-accent: #c9a96e;
-  --color-accent-light: #f5edd6;
   --font-heading: 'Figtree', system-ui, sans-serif;
   --font-body: 'Inter', system-ui, sans-serif;
 }
 
 body {
-  background: var(--color-white);
-  color: var(--color-grey-800);
+  background: var(--color-surface);
+  color: var(--color-text-primary);
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -35,7 +38,16 @@ img {
   object-fit: cover;
 }
 
-::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: var(--color-grey-50); }
-::-webkit-scrollbar-thumb { background: var(--color-grey-300); border-radius: 3px; }
-::selection { background: var(--color-accent); color: white; }
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-cement-400); border-radius: 2px; }
+::selection { background: var(--color-cement-300); color: var(--color-text-primary); }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}

@@ -11,7 +11,7 @@ export default function FloatingActionBar() {
         href="https://wa.me/1234567890" target="_blank"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.5 }}
+        transition={{ delay: 0.4 }}
         whileHover={{ scale: 1.1 }}
         className="w-12 h-12 md:w-14 md:h-14 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-lg"
         aria-label="WhatsApp"
@@ -22,9 +22,9 @@ export default function FloatingActionBar() {
         href="tel:+1234567890"
         initial={{ opacity: 0, scale: 0 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.6 }}
+        transition={{ delay: 0.5 }}
         whileHover={{ scale: 1.1 }}
-        className="w-12 h-12 md:w-14 md:h-14 bg-accent text-white rounded-full flex items-center justify-center shadow-lg"
+        className="w-12 h-12 md:w-14 md:h-14 bg-text-primary text-white rounded-full flex items-center justify-center shadow-lg"
         aria-label="Call"
       >
         <FaPhone size={16} className="md:w-5 md:h-5" />

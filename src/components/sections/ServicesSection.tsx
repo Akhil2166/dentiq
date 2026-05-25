@@ -12,26 +12,9 @@ const services = [
   { title: "Gum Sculpting", desc: "Reshape your gum line for a balanced, beautiful smile frame.", img: "/assets/dental/0e581f79-e0bb-4192-81a7-1a52462a3cb8.png" },
 ];
 
-const Card = ({ title, desc, img, i }: typeof services[0] & { i: number }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, margin: "-30px" }}
-    transition={{ duration: 0.5, delay: i * 0.08 }}
-    whileHover={{ y: -8 }}
-    className="group"
-  >
-    <div className="aspect-[4/3] w-full rounded-xl overflow-hidden bg-grey-100">
-      <img src={img} alt={title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-    </div>
-    <h3 className="text-base md:text-lg font-heading font-semibold text-grey-900 mt-3 md:mt-4 group-hover:text-grey-600 transition-colors">{title}</h3>
-    <p className="text-sm text-grey-400 leading-relaxed mt-1">{desc}</p>
-  </motion.div>
-);
-
 export default function ServicesSection() {
   return (
-    <section id="services" className="w-full px-5 md:px-8 py-20 md:py-32">
+    <section id="services" className="w-full px-5 md:px-8 lg:px-16 py-24 md:py-36 bg-surface">
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -40,13 +23,33 @@ export default function ServicesSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-xl mx-auto mb-12 md:mb-16"
         >
-          <span className="text-xs md:text-sm text-grey-400 uppercase tracking-[0.25em] font-medium">Our Expertise</span>
-          <h2 className="text-3xl md:text-5xl font-heading font-bold text-grey-900 mt-2 md:mt-3">Treatments</h2>
-          <p className="text-sm md:text-base text-grey-400 mt-2 md:mt-3">From subtle refinements to complete transformations.</p>
+          <span className="text-[10px] md:text-xs text-text-muted uppercase tracking-[0.25em] font-medium">Our Expertise</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-heading font-bold text-text-primary mt-2 md:mt-3">Treatments</h2>
+          <p className="text-sm md:text-base text-text-secondary mt-2 md:mt-3">From subtle refinements to complete transformations.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8">
-          {services.map((s, i) => <Card key={i} {...s} i={i} />)}
+          {services.map((s, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.5, delay: i * 0.08 }}
+              whileHover={{ y: -6 }}
+              className="group"
+            >
+              <div className="aspect-[4/3] w-full rounded-xl overflow-hidden bg-cement-200 shadow-sm">
+                <img src={s.img} alt={s.title}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                  loading="lazy" />
+              </div>
+              <h3 className="text-base md:text-lg font-heading font-semibold text-text-primary mt-3 md:mt-4 group-hover:opacity-60 transition-opacity">
+                {s.title}
+              </h3>
+              <p className="text-sm text-text-secondary leading-relaxed mt-1">{s.desc}</p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
